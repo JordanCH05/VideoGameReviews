@@ -5,7 +5,6 @@ attrs==21.2.0
 autopep8==1.5.7
 backcall==0.2.0
 backports.entry-points-selectable==1.1.0
-backports.zoneinfo==0.2.1
 bandit==1.7.0
 bleach==4.1.0
 certifi==2021.5.30
@@ -59,6 +58,7 @@ pbr==5.6.0
 pep8==1.7.1
 pexpect==4.8.0
 pickleshare==0.7.5
+Pillow==9.0.0
 pipenv==2021.5.29
 pkginfo==1.7.1
 platformdirs==2.3.0
