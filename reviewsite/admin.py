@@ -10,6 +10,10 @@ class GameAdmin(SummernoteModelAdmin):
     list_display = ('title', 'slug', 'score', 'approved')
     search_fields = ['title', 'description']
     summernote_fields = ('description')
+    actions = ['approve_games']
+
+    def approve_games(self, request, queryset):
+        queryset.update(approved=True)
 
 @admin.register(Review)
 class ReviewAdmin(SummernoteModelAdmin):
