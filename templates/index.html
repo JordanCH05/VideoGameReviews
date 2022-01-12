@@ -16,13 +16,13 @@
                                 
                                 <img class="card-img-top" src=" {{ game.image.url }}">
                                 <div class="image-flash">
-                                    <p class="author">Author: {{ game.developer }}</p>
+                                    <p class="author">Developer: {{ game.developer }}</p>
                                 </div>
                             </div>
                             <a href="#" class="post-link">
                                 <h2 class="card-title">{{ game.title }}</h2>
-                                <p class="card-text">{{ game.description }}</p>
                             </a>
+                            <p>{{ game.description | safe }}</p> 
                         </div>
                     </div>
                 </div>
