@@ -25,7 +25,7 @@ class Game(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     developer = models.CharField(max_length=200)
     score = models.IntegerField()
-    image = models.ImageField()
+    image = CloudinaryField('image')
     description = models.TextField()
     approved = models.BooleanField(default=False)
     reviews = models.ManyToManyField(Review, related_name='game_reviews', blank=True)

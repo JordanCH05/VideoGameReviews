@@ -12,12 +12,22 @@
                 <div class="col-md-4">
                     <div class="card md-4">
                         <div class="card-body">
-
+                            <div class="image-container">
+                                
+                                <img class="card-img-top" src=" {{ game.image.url }}">
+                                <div class="image-flash">
+                                    <p class="author">Author: {{ game.developer }}</p>
+                                </div>
+                            </div>
+                            <a href="#" class="post-link">
+                                <h2 class="card-title">{{ game.title }}</h2>
+                                <p class="card-text">{{ game.description }}</p>
+                            </a>
                         </div>
                     </div>
                 </div>
 
-            {% if forloop.copunter|divisibleby:3 %}
+            {% if forloop.counter|divisibleby:3 %}
             </div>
             <div class="row">
             {% endif %}
@@ -25,6 +35,19 @@
             </div>
         </div>
     </div>
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
 
 </div>
 
