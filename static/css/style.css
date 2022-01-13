@@ -5,3 +5,11 @@ body {
 .sp-yellow-bg {
     background-color: #F1B814;
 }
+
+#logo {
+    max-height: 100px;
+}
+
+.navigation-text {
+    font-size: 24px;
+}
