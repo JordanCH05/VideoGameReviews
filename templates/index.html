@@ -12,17 +12,16 @@
                 <div class="col-md-4">
                     <div class="card md-4">
                         <div class="card-body">
-                            <div class="image-container">
-                                
+                            <a href="#">
                                 <img class="card-img-top" src=" {{ game.image.url }}">
-                                <div class="image-flash">
-                                    <p class="author">Developer: {{ game.developer }}</p>
+                                <div>
+                                    <p>Developer: {{ game.developer }}</p>
                                 </div>
-                            </div>
-                            <a href="#" class="post-link">
                                 <h2 class="card-title">{{ game.title }}</h2>
+                                <div>
+                                    <p>Score: {{ game.score }}</p>
+                                </div>
                             </a>
-                            <p>{{ game.description | safe }}</p> 
                         </div>
                     </div>
                 </div>
