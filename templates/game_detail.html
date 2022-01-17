@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-md-8">
+    <div class="card md-8">
+        <div class="card-body">
+            <a href="#">
+                <img class="card-img-top" src=" {{ game.image.url }}">
+                <div>
+                    <p>Developer: {{ game.developer }}</p>
+                </div>
+                <h2 class="card-title">{{ game.title }}</h2>
+                <div>
+                    <p>Score: {{ game.score }}</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
