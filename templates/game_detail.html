@@ -5,17 +5,37 @@
 <div class="col-md-8">
     <div class="card md-8">
         <div class="card-body">
-            <a href="#">
-                <img class="card-img-top" src=" {{ game.image.url }}">
-                <div>
-                    <p>Developer: {{ game.developer }}</p>
-                </div>
-                <h2 class="card-title">{{ game.title }}</h2>
-                <div>
-                    <p>Score: {{ game.score }}</p>
-                </div>
-            </a>
+            <img class="card-img-top" src=" {{ game.image.url }}">
+            <div>
+                <p>Developer: {{ game.developer }}</p>
+            </div>
+            <h2 class="card-title">{{ game.title }}</h2>
+            <div>
+                <p>Score: {{ game.score }}</p>
+            </div>
         </div>
+        <div>
+            <p>{{ game.description | safe }}</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <h3 class="card-title text-uppercase text-warning">Reviews</h3>
+    <div class="col-md-8 card md-4 mt-3">
+        
+        {% for review in reviews %}
+        <div class="card-body">
+            <div class="card-text position-relative">
+                    <span class="position-absolute top-0 start-0">{{ review.username }}</span>
+                    <span class="position-absolute top-0 start-50 translate-middle-x">{{ review.score }}</span>
+                    <span class="position-absolute top-0 end-0">{{ review.created_on }}</span>
+            </div>
+        </div>
+        <div>
+            {{ review.body | safe }}
+        </div>
+        <hr>
+        {% endfor %}
     </div>
 </div>
 
