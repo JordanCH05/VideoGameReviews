@@ -10,9 +10,10 @@
                 <p>Developer: {{ game.developer }}</p>
             </div>
             <h2 class="card-title">{{ game.title }}</h2>
-            <div>
-                <p>Score: {{ game.score }}</p>
+            <div class="stars-outer">
+                <div class="stars-inner"></div>
             </div>
+            <div class="score">{{ game.score }}</div>
         </div>
         <div>
             <p>{{ game.description | safe }}</p>
@@ -27,7 +28,12 @@
         <div class="card-body">
             <div class="card-text position-relative">
                     <span class="position-absolute top-0 start-0">{{ review.username }}</span>
-                    <span class="position-absolute top-0 start-50 translate-middle-x">{{ review.score }}</span>
+                    <span class="position-absolute top-0 start-50 translate-middle-x">
+                        <div class="stars-outer">
+                            <div class="stars-inner"></div>
+                        </div>
+                        <div class="score">{{ review.score }}</div>
+                    </span>
                     <span class="position-absolute top-0 end-0">{{ review.created_on }}</span>
             </div>
         </div>
@@ -38,5 +44,22 @@
         {% endfor %}
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', starRating);
+
+    function starRating() {
+        
+        const ratings = document.querySelectorAll(".score")
+        for (let rating in ratings) {
+            const score = ratings[rating].innerText;
+            const scorePercent = (score / 5) * 100;
+            const scorePercentRounded = `${Math.round
+            ((scorePercent) / 10) * 10}%`;
+            document.querySelectorAll(".stars-inner")[rating].style.width = scorePercentRounded;
+        }
+        
+    }
+
+</script>
 
 {%endblock%}
