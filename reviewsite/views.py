@@ -12,5 +12,14 @@ class GameDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
         queryset = Game.objects.filter(approved=True)
-        post = get_object_or_404(queryset, slug=slug)
-        reviews = game.reviews.filter(approved=True)
+        game = get_object_or_404(queryset, slug=slug)
+        reviews = game.reviews.filter(approved=True).order_by('created_on')
+
+        return render(
+            request,
+            "game_detail.html",
+            {
+                "game": game,
+                "reviews": reviews,
+            }
+        )
