@@ -8,7 +8,7 @@ class Game(models.Model):
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     developer = models.CharField(max_length=200)
-    score = models.IntegerField()
+    score = models.DecimalField(decimal_places=2, max_digits=3)
     image = CloudinaryField('image')
     description = models.TextField()
     approved = models.BooleanField(default=False)
