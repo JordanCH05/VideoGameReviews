@@ -20,8 +20,8 @@ class Game(models.Model):
         return self.title
 
 class Review(models.Model):
-    username = models.ForeignKey(User, on_delete=models.CASCADE, related_name="name")
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='reviews')
     score = models.DecimalField(decimal_places=2, max_digits=3)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
