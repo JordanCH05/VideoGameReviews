@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+{% load crispy_forms_tags %}
+
 <div class="container">
     <div class="row">
         <div class="mt-3">
@@ -16,21 +19,23 @@
                     </div>
                     <div class="score">{{ game.score }}</div>
                 </div>
-                <div>
-                    <p>{{ game.description | safe }}</p>
+                <div class="card-body">
+                    <div class="card-text">
+                        {{ game.description | safe }}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <div class="mt-3">
+        <div class="mt-3 mb-8">
             <h3 class="card-title text-center text-uppercase text-warning">Reviews</h3>
-            <div class="card">
                 
-                {% for review in reviews %}
+            {% for review in reviews %}
+            <div class="card mb-2">
                 <div class="card-body">
-                    <div class="card-text position-relative">
+                    <div class="card-text position-relative p-3">
                             <span class="position-absolute top-0 start-0">{{ review.username }}</span>
                             <span class="position-absolute top-0 start-50 translate-middle-x">
                                 <div class="stars-outer">
@@ -41,11 +46,35 @@
                             <span class="position-absolute top-0 end-0">{{ review.created_on }}</span>
                     </div>
                 </div>
-                <div>
-                    {{ review.body | safe }}
+                <div class="card-body">
+                    <div class="card-text">
+                        {{ review.body | safe }}
+                    </div>
                 </div>
-                <hr>
-                {% endfor %}
+            </div>
+            {% endfor %}
+            
+        </div>
+        <div class="mb-8">
+            <div class="card mb-2">
+                <div class="card-body">
+                    {% if reviewed %}
+                    <div class="alert alert-success" role="alert">
+                        Your review is awaiting approval
+                    </div>
+                    {% else %}
+                    {% if user.is_authenticated %}
+
+                    <h3>Add Review:</h3>
+                    <p>Posting as: {{ user.username }}</p>
+                    <form method="post" style="margin-top: 1.3em;">
+                        {{ review_form | crispy }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-lg">Submit</button>
+                    </form>
+                    {% endif %}
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
