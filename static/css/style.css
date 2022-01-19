@@ -2,6 +2,10 @@ body {
     background-color: black;
 }
 
+main {
+    padding-bottom: 80px;
+}
+
 .sp-yellow-bg {
     background-color: #F1B814;
 }
