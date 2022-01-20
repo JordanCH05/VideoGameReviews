@@ -72,6 +72,8 @@
                         {% csrf_token %}
                         <button type="submit" class="btn btn-lg">Submit</button>
                     </form>
+                    {% else %}
+                    <h3><a href="{% url 'account_signup' %}">Sign up</a> or <a href="{% url 'account_login' %}">log in</a> to leave a review</h3>
                     {% endif %}
                     {% endif %}
                 </div>
