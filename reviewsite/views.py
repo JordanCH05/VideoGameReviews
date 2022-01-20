@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
+from django.db.models import Avg
 from .models import Game
 from .forms import ReviewForm
 
@@ -15,6 +16,9 @@ class GameDetail(View):
         queryset = Game.objects.filter(approved=True)
         game = get_object_or_404(queryset, slug=slug)
         reviews = game.reviews.filter(approved=True).order_by('created_on')
+        game_score = reviews.all().aggregate(Avg('score'))['score__avg']
+        game.score = game_score
+        game.save()
 
         return render(
             request,
@@ -24,13 +28,15 @@ class GameDetail(View):
                 "reviews": reviews,
                 "reviewed": False,
                 "review_form": ReviewForm(),
-            }
+                "game_score": game_score,
+            },
         )
     
     def post(self, request, slug, *args, **kwargs):
         queryset = Game.objects.filter(approved=True)
         game = get_object_or_404(queryset, slug=slug)
         reviews = game.reviews.filter(approved=True).order_by('created_on')
+        game_score = reviews.all().aggregate(Avg('score'))['score__avg']
 
         review_form = ReviewForm(data=request.POST)
 
@@ -40,6 +46,8 @@ class GameDetail(View):
             review = review_form.save(commit=False)
             review.game = game
             review.save()
+            game.score = game_score
+            game.save()
         else:
             review_form = ReviewForm()
 
@@ -51,5 +59,6 @@ class GameDetail(View):
                 "reviews": reviews,
                 "reviewed": True,
                 "review_form": ReviewForm(),
+                "game_score": game_score,
             }
         )
