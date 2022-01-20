@@ -45,4 +45,8 @@ main {
     font-weight: 900;
     color: #f8ce0b;
 }
+
+.score {
+    visibility: hidden;
+}
   
