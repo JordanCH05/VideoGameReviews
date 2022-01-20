@@ -17,6 +17,8 @@ class GameDetail(View):
         game = get_object_or_404(queryset, slug=slug)
         reviews = game.reviews.filter(approved=True).order_by('created_on')
         game_score = reviews.all().aggregate(Avg('score'))['score__avg']
+        if game_score == None:
+            game_score = 0
         game.score = game_score
         game.save()
 
@@ -37,7 +39,8 @@ class GameDetail(View):
         game = get_object_or_404(queryset, slug=slug)
         reviews = game.reviews.filter(approved=True).order_by('created_on')
         game_score = reviews.all().aggregate(Avg('score'))['score__avg']
-
+        if game_score == None:
+            game_score = 0
         review_form = ReviewForm(data=request.POST)
 
         if review_form.is_valid():
