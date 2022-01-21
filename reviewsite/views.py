@@ -103,7 +103,14 @@ def edit_review(request, slug, review_id, *args, **kwargs):
         edited_review.game = game
         # Save Game Review
         edited_review.save()
-        return redirect(reverse('game_detail', args=[game.slug]), reviewed=True)
+        return render(
+            request,
+            "edit_review.html",
+            {
+                "reviewed": True,
+                "review_form": review_form,
+            }
+        )
     else:
         review_form = ReviewForm(instance=review)
 
