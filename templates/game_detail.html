@@ -50,6 +50,10 @@
                     <div class="card-text">
                         {{ review.body | safe }}
                     </div>
+                    {% if user == review.username %}
+                    <a class="btn" href="{% url 'edit_review' review.id game.slug %}">Edit</a>
+                    <a class="btn btn-outline-danger" href="{% url 'delete_review' review.id game.slug %}">Delete</a>
+                    {% endif %}
                 </div>
             </div>
             {% endfor %}

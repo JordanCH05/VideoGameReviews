@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% load crispy_forms_tags %}
+
+<div class="container">
+    <div class="row">
+        <div class="mb-8">
+            <div class="card mb-2">
+                <div class="card-body">
+                    {% if reviewed %}
+                    <div class="alert alert-success" role="alert">
+                        Your review is awaiting approval
+                    </div>
+                    {% else %}
+                    {% if user.is_authenticated %}
+
+                    <h3>Edit Review:</h3>
+                    <p>Posting as: {{ user.username }}</p>
+                    <form method="post" style="margin-top: 1.3em;">
+                        {{ review_form | crispy | safe }}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-lg btn-secondary">Submit</button>
+                    </form>
+                    {% else %}
+                    <h3><a href="{% url 'account_signup' %}">Sign up</a> or <a href="{% url 'account_login' %}">log in</a> to leave a review</h3>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

@@ -1,7 +1,7 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
 from django.db.models import Avg
-from .models import Game
+from .models import Game, Review
 from .forms import ReviewForm
 
 class GameList(generic.ListView):
@@ -72,5 +72,55 @@ class GameDetail(View):
                 "reviewed": True,
                 "review_form": ReviewForm(),
                 "game_score": game_score,
+            }
+        )
+
+
+def delete_review(request, slug, review_id, *args, **kwargs):
+    """ Delete a review """
+    queryset = Game.objects.filter(approved=True)
+    game = get_object_or_404(queryset, slug=slug)
+
+    review = Review.objects.get(pk=review_id)
+    review.delete()
+
+    return redirect(reverse('game_detail', args=[game.slug]))
+
+def edit_review(request, slug, review_id, *args, **kwargs):
+    """ Edit a review """
+    queryset = Game.objects.filter(approved=True)
+    game = get_object_or_404(queryset, slug=slug)
+    reviews = game.reviews.filter(approved=True).order_by('created_on')
+
+    # Update game score based on average review score
+    game_score = reviews.all().aggregate(Avg('score'))['score__avg']
+    if game_score == None:
+        game_score = 0
+    game.score = game_score
+    game.save()
+
+    review = Review.objects.get(pk=review_id)
+    review_form = ReviewForm(data=request.POST, instance=review)
+    if review_form.is_valid():
+        review_form.instance.email = request.user.email
+        review_form.instance.username = request.user
+        # Create Review object without commiting
+        edited_review = review_form.save(commit=False)
+        #  Assign current Game to Review
+        edited_review.game = game
+        # Save Game Review
+        edited_review.save()
+        game.score = game_score
+        game.save()
+        return redirect(reverse('game_detail', args=[game.slug]))
+    else:
+        review_form = ReviewForm(instance=review)
+
+    return render(
+            request,
+            "edit_review.html",
+            {
+                "reviewed": False,
+                "review_form": review_form,
             }
         )
