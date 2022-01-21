@@ -90,14 +90,6 @@ def edit_review(request, slug, review_id, *args, **kwargs):
     """ Edit a review """
     queryset = Game.objects.filter(approved=True)
     game = get_object_or_404(queryset, slug=slug)
-    reviews = game.reviews.filter(approved=True).order_by('created_on')
-
-    # Update game score based on average review score
-    game_score = reviews.all().aggregate(Avg('score'))['score__avg']
-    if game_score == None:
-        game_score = 0
-    game.score = game_score
-    game.save()
 
     review = Review.objects.get(pk=review_id)
     review_form = ReviewForm(data=request.POST, instance=review)
@@ -110,8 +102,6 @@ def edit_review(request, slug, review_id, *args, **kwargs):
         edited_review.game = game
         # Save Game Review
         edited_review.save()
-        game.score = game_score
-        game.save()
         return redirect(reverse('game_detail', args=[game.slug]))
     else:
         review_form = ReviewForm(instance=review)
