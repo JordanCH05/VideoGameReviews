@@ -96,13 +96,14 @@ def edit_review(request, slug, review_id, *args, **kwargs):
     if review_form.is_valid():
         review_form.instance.email = request.user.email
         review_form.instance.username = request.user
+        review_form.instance.approved = False
         # Create Review object without commiting
         edited_review = review_form.save(commit=False)
         #  Assign current Game to Review
         edited_review.game = game
         # Save Game Review
         edited_review.save()
-        return redirect(reverse('game_detail', args=[game.slug]))
+        return redirect(reverse('game_detail', args=[game.slug]), reviewed=True)
     else:
         review_form = ReviewForm(instance=review)
 
