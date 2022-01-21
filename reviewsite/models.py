@@ -5,6 +5,7 @@ from cloudinary.models import CloudinaryField
 STATUS = ((0, "Draft"), (1, "Published"))
 
 class Game(models.Model):
+    """ Game Model """
     title = models.CharField(max_length=200, unique=True)
     slug = models.SlugField(max_length=200, unique=True)
     developer = models.CharField(max_length=200)
@@ -20,6 +21,7 @@ class Game(models.Model):
         return self.title
 
 class Review(models.Model):
+    """ Game Review Model """
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='reviews')
     score = models.DecimalField(decimal_places=2, max_digits=3)

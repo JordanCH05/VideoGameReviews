@@ -5,17 +5,20 @@ from .models import Game
 from .forms import ReviewForm
 
 class GameList(generic.ListView):
+    """ A view showing list of all games """
     model = Game
     queryset = Game.objects.filter(approved=True).order_by('-score')
     template_name = 'index.html'
     paginate_by = 9
 
 class GameDetail(View):
-
+    """ A view to show individual game detail by unique url slug """
     def get(self, request, slug, *args, **kwargs):
         queryset = Game.objects.filter(approved=True)
         game = get_object_or_404(queryset, slug=slug)
         reviews = game.reviews.filter(approved=True).order_by('created_on')
+
+        # Update game score based on average review score
         game_score = reviews.all().aggregate(Avg('score'))['score__avg']
         if game_score == None:
             game_score = 0
@@ -38,16 +41,22 @@ class GameDetail(View):
         queryset = Game.objects.filter(approved=True)
         game = get_object_or_404(queryset, slug=slug)
         reviews = game.reviews.filter(approved=True).order_by('created_on')
+
+        # Update game score based on average review score
         game_score = reviews.all().aggregate(Avg('score'))['score__avg']
         if game_score == None:
             game_score = 0
-        review_form = ReviewForm(data=request.POST)
 
+        # Post Review
+        review_form = ReviewForm(data=request.POST)
         if review_form.is_valid():
             review_form.instance.email = request.user.email
             review_form.instance.username = request.user
+            # Create Review object without commiting
             review = review_form.save(commit=False)
+            #  Assign current Game to Review
             review.game = game
+            # Save Game Review
             review.save()
             game.score = game_score
             game.save()
