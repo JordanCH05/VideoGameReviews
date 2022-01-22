@@ -13,6 +13,7 @@ class Game(models.Model):
     image = CloudinaryField('image')
     description = models.TextField()
     approved = models.BooleanField(default=False)
+    status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:
         ordering = ['-score']
@@ -27,7 +28,6 @@ class Review(models.Model):
     score = models.DecimalField(decimal_places=2, max_digits=3)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
-    status = models.IntegerField(choices=STATUS, default=0)
     body = models.TextField(blank=True)
     approved = models.BooleanField(default=False)
 
