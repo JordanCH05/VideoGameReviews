@@ -7,14 +7,14 @@ from django_summernote.admin import SummernoteModelAdmin
 class GameAdmin(SummernoteModelAdmin):
 
     prepopulated_fields = {'slug': ('title',)}
-    list_filter = ('approved', 'status')
-    list_display = ('title', 'slug', 'score', 'approved')
+    list_filter = ('status',)
+    list_display = ('title', 'slug', 'score')
     search_fields = ['title', 'description']
     summernote_fields = ('description')
-    actions = ['approve_games']
+    actions = ['publish_games']
 
-    def approve_games(self, request, queryset):
-        queryset.update(approved=True)
+    def publish_games(self, request, queryset):
+        queryset.update(status=1)
 
 # Review Content
 @admin.register(Review)

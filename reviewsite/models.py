@@ -12,7 +12,6 @@ class Game(models.Model):
     score = models.DecimalField(decimal_places=2, max_digits=3)
     image = CloudinaryField('image')
     description = models.TextField()
-    approved = models.BooleanField(default=False)
     status = models.IntegerField(choices=STATUS, default=0)
 
     class Meta:

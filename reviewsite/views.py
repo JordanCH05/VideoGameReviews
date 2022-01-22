@@ -7,14 +7,14 @@ from .forms import ReviewForm
 class GameList(generic.ListView):
     """ A view showing list of all games """
     model = Game
-    queryset = Game.objects.filter(approved=True).order_by('-score')
+    queryset = Game.objects.filter(status=1).order_by('-score')
     template_name = 'index.html'
     paginate_by = 9
 
 class GameDetail(View):
     """ A view to show individual game detail by unique url slug """
     def get(self, request, slug, *args, **kwargs):
-        queryset = Game.objects.filter(approved=True)
+        queryset = Game.objects.filter(status=1)
         game = get_object_or_404(queryset, slug=slug)
         reviews = game.reviews.filter(approved=True).order_by('created_on')
 
@@ -38,7 +38,7 @@ class GameDetail(View):
         )
     
     def post(self, request, slug, *args, **kwargs):
-        queryset = Game.objects.filter(approved=True)
+        queryset = Game.objects.filter(status=1)
         game = get_object_or_404(queryset, slug=slug)
         reviews = game.reviews.filter(approved=True).order_by('created_on')
 
@@ -78,7 +78,7 @@ class GameDetail(View):
 
 def delete_review(request, slug, review_id, *args, **kwargs):
     """ Delete a review """
-    queryset = Game.objects.filter(approved=True)
+    queryset = Game.objects.filter(status=1)
     game = get_object_or_404(queryset, slug=slug)
 
     review = Review.objects.get(pk=review_id)
@@ -88,7 +88,7 @@ def delete_review(request, slug, review_id, *args, **kwargs):
 
 def edit_review(request, slug, review_id, *args, **kwargs):
     """ Edit a review """
-    queryset = Game.objects.filter(approved=True)
+    queryset = Game.objects.filter(status=1)
     game = get_object_or_404(queryset, slug=slug)
 
     review = Review.objects.get(pk=review_id)
