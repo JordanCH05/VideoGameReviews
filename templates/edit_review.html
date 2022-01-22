@@ -19,7 +19,7 @@
                     <h3>Edit Review:</h3>
                     <p>Posting as: {{ user.username }}</p>
                     <form method="post" style="margin-top: 1.3em;">
-                        {{ review_form | crispy | safe }}
+                        {{ review_form | crispy }}
                         {% csrf_token %}
                         <button type="submit" class="btn btn-lg btn-secondary">Submit</button>
                     </form>
