@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect, reverse
 from django.views import generic, View
 from django.db.models import Avg
+from django.contrib import messages
 from .models import Game, Review
 from .forms import ReviewForm
 
@@ -9,7 +10,7 @@ class GameList(generic.ListView):
     model = Game
     queryset = Game.objects.filter(status=1).order_by('-score')
     template_name = 'index.html'
-    paginate_by = 9
+    paginate_by = 6
 
 class GameDetail(View):
     """ A view to show individual game detail by unique url slug """
@@ -60,6 +61,7 @@ class GameDetail(View):
             review.save()
             game.score = game_score
             game.save()
+            messages.success(request, 'Review added.')
         else:
             review_form = ReviewForm()
 
