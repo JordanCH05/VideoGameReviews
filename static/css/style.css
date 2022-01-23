@@ -6,8 +6,23 @@ main {
     padding-bottom: 80px;
 }
 
+h1 {
+    font-family: Romanesco, serif;
+}
+
+/* Colours */
+
 .sp-yellow-bg {
     background-color: #F1B814;
+}
+
+.text-yellow {
+    color: #F1B814;
+}
+
+.text-purple {
+    color: #490B3D;
+
 }
 
 /* Navigation */
@@ -49,8 +64,4 @@ main {
     font-weight: 900;
     color: #f8ce0b;
 }
-
-/* .score {
-    visibility: hidden;
-} */
   
