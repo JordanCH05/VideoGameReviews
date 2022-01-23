@@ -4,6 +4,20 @@ from cloudinary.models import CloudinaryField
 
 STATUS = ((0, "Draft"), (1, "Published"))
 
+SCORE_CHOICES = [
+    (0, '0.0 - Worst Game Ever'),
+	(0.5, '0.5 - Horrible'),
+	(1, '1.0 - Terrible'),
+	(1.5, '1.5 - Rubbish'),
+	(2, '2.0 - Bad'),
+	(2.5, '2.5 - Mediocre'),
+	(3, '3.0 - Playable'),
+	(3.5, '3.5 - Ok'),
+	(4, '4.0 - Good'),
+	(4.5, '4.5 - Great'),
+	(5, '5.0 - Master Piece'), 
+]
+
 class Game(models.Model):
     """ Game Model """
     title = models.CharField(max_length=200, unique=True)
@@ -24,7 +38,7 @@ class Review(models.Model):
     """ Game Review Model """
     username = models.ForeignKey(User, on_delete=models.CASCADE)
     game = models.ForeignKey(Game, on_delete=models.CASCADE, related_name='reviews')
-    score = models.DecimalField(decimal_places=2, max_digits=3)
+    score = models.DecimalField(choices=SCORE_CHOICES, decimal_places=1, max_digits=2)
     created_on = models.DateTimeField(auto_now_add=True)
     updated_on = models.DateTimeField(auto_now=True)
     body = models.TextField(blank=True)
