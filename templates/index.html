@@ -10,19 +10,18 @@
             <div class="row">
             {% for game in game_list %}
                 <div class="col-md-4">
-                    <div class="card md-4">
+                    <div class="card m-4 bg-secondary text-warning">
                         <div class="card-body">
-                            <a href="{% url 'game_detail' game.slug %}">
-                                <img class="card-img-top" src=" {{ game.image.url }}">
-                                <div>
-                                    <p>Developer: {{ game.developer }}</p>
-                                </div>
-                                <h2 class="card-title">{{ game.title }}</h2>
-                                <div class="stars-outer">
-                                    <div class="stars-inner"></div>
-                                </div>
-                                <div class="score">{{ game.score }}</div>
-                            </a>
+                            <img class="card-img-top" src=" {{ game.image.url }}">
+                            <div>
+                                <p>Developer: {{ game.developer }}</p>
+                            </div>
+                            <h2 class="card-title">{{ game.title }}</h2>
+                            <div class="stars-outer">
+                                <div class="stars-inner"></div>
+                            </div>
+                            <div class="score visually-hidden-focusable">{{ game.score }}</div>
+                            <a href="{% url 'game_detail' game.slug %}" class="stretched-link"></a>
                         </div>
                     </div>
                 </div>
