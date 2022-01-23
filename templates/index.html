@@ -1,30 +1,47 @@
 {% extends "base.html" %}
 
+<!-- Title -->
 {% block title %}
 Choose a game to review
 {% endblock title %}
 
 {% block content %}
 
+<div class="container">
+    <div class="row">
+        <div class="col-8 offset-2 mt-4">
+            <div class="card text-yellow bg-dark text-center">
+                <h1 class="card-title">
+                    Welcome to Royal Robot Reviews
+                </h1>
+                <div class="card-body">
+                    <p>Where you can read & write genuine reviews on some amazing games</p>
+                    <p>Pick a game below to review</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="container-fluid">
     <div class="row">
 
         <!-- Games Column -->
-        <div class="col-12 mt-3 left">
-            <div class="row">
+        <div class="col-12 my-3 left">
+            <div class="row mb-4">
             {% for game in game_list %}
                 <div class="col-md-4">
-                    <div class="card m-4 bg-secondary text-warning">
-                        <div class="card-body h-50">
-                            <img class="card-img-top h-75" style="object-fit: cover" src=" {{ game.image.url }}">
-                            <div>
+                    <div class="card bg-dark text-warning h-100">
+                        <div class="card-body">
+                            <img class="card-img-top position-relative h-75" style="object-fit: cover" src=" {{ game.image.url }}">
+                            <div class="text-center">
+                                <h2 class="card-title">{{ game.title }}</h2>
+                                <div class="stars-outer fs-2">
+                                    <div class="stars-inner"></div>
+                                </div>
                                 <p>Developer: {{ game.developer }}</p>
+                                <div class="score visually-hidden-focusable">{{ game.score }}</div>
                             </div>
-                            <h2 class="card-title">{{ game.title }}</h2>
-                            <div class="stars-outer">
-                                <div class="stars-inner"></div>
-                            </div>
-                            <div class="score visually-hidden-focusable">{{ game.score }}</div>
                             <a href="{% url 'game_detail' game.slug %}" class="stretched-link"></a>
                         </div>
                     </div>
@@ -38,6 +55,8 @@ Choose a game to review
             </div>
         </div>
     </div>
+
+    <!-- Pagination -->
     {% if is_paginated %}
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
