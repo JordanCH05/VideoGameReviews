@@ -32,7 +32,12 @@
 
     <nav class="navbar navbar-expand-md navbar-light sp-yellow-bg">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}"><img id="logo" src="{% static 'images/logo.png' %}" alt="Royal Robot Crown Logo"></a>
+            <!-- Logo -->
+            <a class="navbar-brand d-flex flex-row" href="{% url 'home' %}">
+                <img id="logo" src="{% static 'images/logo.png' %}" alt="Royal Robot Crown Logo">
+                <h1 class="text-purple align-self-center">Royal Robot Reviews</h1>
+            </a>
+
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
                 aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
