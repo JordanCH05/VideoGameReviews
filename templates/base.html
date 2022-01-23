@@ -20,6 +20,7 @@
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static 'js/script.js' %}" defer></script>
 
     
 
@@ -84,32 +85,6 @@
             <i class="fab fa-instagram-square ms-3"></i>
             <i class="fab fa-youtube-square ms-3"></i></p>
     </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', starRating);
-    
-        /**
-        * Styles star rating width based on score
-         */
-        function starRating() {
-            
-            const scores = document.querySelectorAll(".score")
-            for (let score in scores) {
-                const rating = scores[score].innerHTML;
-                const ratingPercent = (rating / 5) * 100;
-                const ratingPercentRounded = `${Math.round
-                ((ratingPercent) / 10) * 10}%`;
-                document.querySelectorAll(".stars-inner")[score].style.width = ratingPercentRounded;
-            }
-            
-        }
-
-        setTimeout(function () {
-            let messages = document.getElementById('msg');
-            let alert = new bootstrap.Alert(messages);
-            alert.close();
-        }, 2500);
-    
-    </script>
     
 </body>
 </html>
