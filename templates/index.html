@@ -11,8 +11,8 @@
             {% for game in game_list %}
                 <div class="col-md-4">
                     <div class="card m-4 bg-secondary text-warning">
-                        <div class="card-body">
-                            <img class="card-img-top" src=" {{ game.image.url }}">
+                        <div class="card-body h-50">
+                            <img class="card-img-top h-75" style="object-fit: cover" src=" {{ game.image.url }}">
                             <div>
                                 <p>Developer: {{ game.developer }}</p>
                             </div>
