@@ -75,6 +75,9 @@
 
                     <h3>Add Review:</h3>
                     <p>Posting as: {{ user.username }}</p>
+                    <div class="stars-outer">
+                        <div class="stars-inner"></div>
+                    </div>
                     <form method="post" style="margin-top: 1.3em;">
                         {{ review_form | crispy }}
                         {% csrf_token %}
