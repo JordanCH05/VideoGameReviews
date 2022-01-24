@@ -34,10 +34,10 @@ Choose a game to review
                 <div class="col-md-4 col-sm-6 mb-4">
                     <div class="card bg-dark text-yellow h-100">
                         <div class="card-body game-link d-flex flex-column">
-                            <img class="card-img-top flex-grow-1" src=" {{ game.image.url }}">
+                            <img class="card-img-top flex-grow-1" src=" {{ game.image.url }}" alt="{{ game.title }}">
                             <div class="text-center">
-                                <h2 class="card-title">{{ game.title }}</h2>
-                                <div class="stars-outer fs-2">
+                                <h2 class="card-title clamp-1">{{ game.title }}</h2>
+                                <div class="stars-outer clamp-1">
                                     <div class="stars-inner"></div>
                                 </div>
                                 <p>Developer: {{ game.developer }}</p>
