@@ -28,12 +28,13 @@ Choose a game to review
 
         <!-- Games Column -->
         <div class="col-12 my-3 left">
-            <div class="row mb-4">
+            <div class="row">
+
             {% for game in game_list %}
-                <div class="col-md-4 col-sm-6">
+                <div class="col-md-4 col-sm-6 mb-4">
                     <div class="card bg-dark text-yellow h-100">
-                        <div class="card-body game-link">
-                            <img class="card-img-top position-relative h-75" src=" {{ game.image.url }}">
+                        <div class="card-body game-link d-flex flex-column">
+                            <img class="card-img-top flex-grow-1" src=" {{ game.image.url }}">
                             <div class="text-center">
                                 <h2 class="card-title">{{ game.title }}</h2>
                                 <div class="stars-outer fs-2">
@@ -46,12 +47,8 @@ Choose a game to review
                         </div>
                     </div>
                 </div>
-
-            {% if forloop.counter|divisibleby:3 %}
-            </div>
-            <div class="row mb-4">
-            {% endif %}
             {% endfor %}
+            
             </div>
         </div>
     </div>
@@ -61,10 +58,10 @@ Choose a game to review
     <nav aria-label="Page navigation">
         <ul class="pagination justify-content-center">
             {% if page_obj.has_previous %}
-            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-warning">&laquo; PREV </a></li>
             {% endif %}
             {% if page_obj.has_next %}
-            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+            <li><a href="?page={{ page_obj.next_page_number }}" class="btn btn-outline-warning"> NEXT &raquo;</a></li>
 
             {% endif %}
         </ul>
