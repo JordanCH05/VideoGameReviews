@@ -73,4 +73,14 @@ h1 {
 .card-img-top {
     object-fit: cover;
 }
+
+.game-link:hover {
+    color: #f8ce0b;
+    background-color: grey;
+}
+
+.game-link:active {
+    color: #490B3D;
+    background-color: #F1B814;
+}
   
