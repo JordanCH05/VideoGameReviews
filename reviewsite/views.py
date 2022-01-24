@@ -114,6 +114,7 @@ def edit_review(request, slug, review_id, *args, **kwargs):
             }
         )
     else:
+        review = Review.objects.get(pk=review_id)
         review_form = ReviewForm(instance=review)
 
     return render(
