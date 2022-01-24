@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import Game, Review
 from django_summernote.admin import SummernoteModelAdmin
 
+
 # Game Content
 @admin.register(Game)
 class GameAdmin(SummernoteModelAdmin):
@@ -15,6 +16,7 @@ class GameAdmin(SummernoteModelAdmin):
 
     def publish_games(self, request, queryset):
         queryset.update(status=1)
+
 
 # Review Content
 @admin.register(Review)
