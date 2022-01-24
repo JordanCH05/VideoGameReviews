@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', starRating);
 
-document.querySelector("#id_score").addEventListener('input', starReviewRating)
+if (document.querySelector("#id_score")) {
+    document.querySelector("#id_score").addEventListener('input', starReviewRating);
+}
     
 /**
 * Styles star rating width based on score
@@ -8,12 +10,16 @@ document.querySelector("#id_score").addEventListener('input', starReviewRating)
 function starRating() {
     
     const scores = document.querySelectorAll(".score")
+    const star_ratings = document.querySelectorAll(".stars-inner");
     for (let score in scores) {
         const rating = scores[score].innerHTML;
-        const ratingPercent = (rating / 5) * 100;
-        const ratingPercentRounded = `${Math.round
-        ((ratingPercent) / 10) * 10}%`;
-        document.querySelectorAll(".stars-inner")[score].style.width = ratingPercentRounded;
+        if (rating) {
+            const ratingPercent = (rating / 5) * 100;
+            const ratingPercentRounded = `${Math.round
+            ((ratingPercent) / 10) * 10}%`;
+            star_ratings[score].style.width 
+            = ratingPercentRounded;
+        }
     }
     
 }
