@@ -9,7 +9,7 @@ if (document.querySelector("#id_score")) {
     */
 function starRating() {
     
-    const scores = document.querySelectorAll(".score")
+    const scores = document.querySelectorAll(".score");
     const star_ratings = document.querySelectorAll(".stars-inner");
     for (let score in scores) {
         const rating = scores[score].innerHTML;
@@ -17,8 +17,7 @@ function starRating() {
             const ratingPercent = (rating / 5) * 100;
             const ratingPercentRounded = `${Math.round
             ((ratingPercent) / 10) * 10}%`;
-            star_ratings[score].style.width 
-            = ratingPercentRounded;
+            star_ratings[score].style.width = ratingPercentRounded;
         }
     }
     
@@ -38,8 +37,6 @@ function starReviewRating() {
             ((ratingPercent) / 10) * 10}%`;
         star_rating.style.width = ratingPercentRounded;
     }
-    
-    console.log(ratingPercent);
 }
 
 /**
