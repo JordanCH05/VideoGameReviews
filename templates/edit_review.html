@@ -10,8 +10,8 @@ Edit review
 
 <div class="container">
     <div class="row">
-        <div class="mb-8">
-            <div class="card mb-2">
+        <div class="mt-3">
+            <div class="card mb-2 bg-dark text-yellow">
                 <div class="card-body">
                     {% if reviewed %}
                     <div class="alert alert-success" role="alert">
@@ -25,7 +25,7 @@ Edit review
                     <form method="post" style="margin-top: 1.3em;">
                         {{ review_form | crispy }}
                         {% csrf_token %}
-                        <button type="submit" class="btn btn-lg btn-secondary">Submit</button>
+                        <button type="submit" class="btn btn-lg btn-outline-warning mt-2 d-flex me-0 ms-auto">Submit</button>
                     </form>
                     {% else %}
                     <h3><a href="{% url 'account_signup' %}">Sign up</a> or <a href="{% url 'account_login' %}">log in</a> to leave a review</h3>
