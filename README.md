@@ -47,6 +47,7 @@ As a user I would like to be able to...
 * View a list of reviews so that I can select one to read
 * Register an account so that I can review, comment, and like
 * Leave a review for a game so that my opinion is heard and I can be involved in rating the game
+* Edit or delete my review in order to show my change of opinion or remove mistakes
 
 ### Admin Stories
 
@@ -70,8 +71,6 @@ As an admin I would like to be able to...
     ![Romanesco Font](static/images/romanescofont.PNG)
 
 * Pages were planned out on [Figma](https://www.figma.com) using wireframes
-
-    ![Image from Figma]()
 
 ## Features
 
@@ -161,12 +160,12 @@ As an admin I would like to be able to...
 
 ### Browsers
 
-* Tested on Google Chrome and Microsoft Edge
+* Tested on Google Chrome, Internet Explorer, Microsoft Edge and even the Samsung Internet App on Mobile and Tablet
 
 ### Responsiveness
 
-* Tested responsiveness on Phone, Tablet and Desktop
-*
+* Tested responsiveness on a Samsung A21 Phone, Samsung Galaxy Tablet and Desktop
+* Tested with Google Chrome Development tools for different screen sizes
 
 ### Accessibility
 
@@ -200,6 +199,7 @@ As an admin I would like to be able to...
 * VS Code as IDE (integrated development environment)
 * PIP to install packages
 * Postgresql for the database to create content and manage data
+* Heroku used for deployment
 
 ### Required modules
 
