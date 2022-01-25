@@ -139,6 +139,10 @@ As an admin I would like to be able to...
     * Review submission, sign in and out message confirmation
     * Times out after 2.5 seconds
 
+* Account pages
+
+    * Login logout and signup pages connected with allauth
+
 ### Future Features
 
 * Users can add games
