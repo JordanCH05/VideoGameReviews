@@ -5,12 +5,14 @@ from django.contrib import messages
 from .models import Game, Review
 from .forms import ReviewForm
 
+
 class GameList(generic.ListView):
     """ A view showing list of all games """
     model = Game
     queryset = Game.objects.filter(status=1).order_by('-score')
     template_name = 'index.html'
     paginate_by = 6
+
 
 class GameDetail(View):
     """ A view to show individual game detail by unique url slug """
@@ -21,7 +23,7 @@ class GameDetail(View):
 
         # Update game score based on average review score
         game_score = reviews.all().aggregate(Avg('score'))['score__avg']
-        if game_score == None:
+        if game_score is None:
             game_score = 0
         game.score = game_score
         game.save()
@@ -37,7 +39,7 @@ class GameDetail(View):
                 "game_score": game_score,
             },
         )
-    
+
     def post(self, request, slug, *args, **kwargs):
         queryset = Game.objects.filter(status=1)
         game = get_object_or_404(queryset, slug=slug)
@@ -45,7 +47,7 @@ class GameDetail(View):
 
         # Update game score based on average review score
         game_score = reviews.all().aggregate(Avg('score'))['score__avg']
-        if game_score == None:
+        if game_score is None:
             game_score = 0
 
         # Post Review
@@ -87,6 +89,7 @@ def delete_review(request, slug, review_id, *args, **kwargs):
     review.delete()
 
     return redirect(reverse('game_detail', args=[game.slug]))
+
 
 def edit_review(request, slug, review_id, *args, **kwargs):
     """ Edit a review """
