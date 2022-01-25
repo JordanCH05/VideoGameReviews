@@ -41,9 +41,21 @@ The live site can be found [here](https://royal-robot-reviews.herokuapp.com/)
 
 As a user I would like to be able to...
 
+* View the list of Video Games so that I can select one to review
+* View a paginated list of videogames so that I can easily select a videogame to view
+* Click on a game so that I can read the full details and reviews of the game and I can review it
+* View a list of reviews so that I can select one to read
+* Register an account so that I can review, comment, and like
+* Leave a review for a game so that my opinion is heard and I can be involved in rating the game
+
 ### Admin Stories
 
 As an admin I would like to be able to...
+
+* Create draft games so that I can finish writing the content later
+* Create, read, update and delete games so that I can manage the site content
+* Create, read, update and delete reviews so that I can manage the site content
+* Approve or disapprove reviews so that I can filter out objectionable content
 
 ## Planning
 
@@ -73,7 +85,12 @@ As an admin I would like to be able to...
 * Base Template
 
     * Header with navigation bar
+
+    ![Header with navigation](static/images/header.png)
+
     * Footer with social media links
+
+    ![Footer with social media links](static/images/footer.png)
 
 * Index Page
     * Introduction telling you about the site and what to do
@@ -81,15 +98,14 @@ As an admin I would like to be able to...
     ![Introduction](static/images/intro.png)
 
     * List of Games to choose
+    * Games ordered by average review scores
+    * Images, titles, scores and developer shown on each game card
 
     ![List of games](static/images/gamelist.png)
 
     * Paginated if above 6 games
 
     ![Paginate Next Button](static/images/pagination.png)
-    * Games ordered by average review scores
-    * Images, titles, scores and developer shown on each game card
-
 
 
 * Game Detail Page
@@ -108,7 +124,8 @@ As an admin I would like to be able to...
 
 * Edit Review Page
 
-    * Will fill the textarea with the review of that instance
+    * Will fill the inputs with the review of that instance to be edited
+    * Submits an updated review to be approved again
 
     ![Edit Review Page](static/images/edit-review.png)
 
@@ -118,11 +135,15 @@ As an admin I would like to be able to...
 
     ![Delete Modal](static/images/delete-modal.png)
 
+* Messages
+
+    * Review submission, sign in and out message confirmation
+    * Times out after 2.5 seconds
+
 ### Future Features
 
 * Users can add games
-
-## Django apps and models
+* Add a spoiler-free tag on reviews
 
 ## Testing
 
@@ -155,7 +176,10 @@ As an admin I would like to be able to...
 
 ## Bugs and Solutions
 
-
+* The starRating function would produce undefined sometimes, so an if statement was used to filter them out to avoid errors
+* The fixed bottom footer would overlap onto the main content, so using flexbox and a mininum height of 100vh for the body element fixed this instead of fixing it to the bottom
+* The game list contents overflowed out of their cards, boostrap classes was used to change the size of the cards accordingly while keeping them all the same height
+* The edit review page wouldn't fill the inputs with the rewview data, so redefining the review instance tended to fix this
 
 ## Languages and Programs Used
 
