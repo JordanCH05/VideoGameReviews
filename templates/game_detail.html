@@ -43,12 +43,12 @@
                 <div class="card-body">
                     <div class="card-text position-relative p-3">
                             <span class="position-absolute top-0 start-0">{{ review.username }}</span>
-                            <span class="position-absolute top-0 start-50 translate-middle-x">
+                            <div class="position-absolute top-0 start-50 translate-middle-x">
                                 <div class="stars-outer">
                                     <div class="stars-inner"></div>
                                 </div>
                                 <div class="score visually-hidden-focusable">{{ review.score }}</div>
-                            </span>
+                            </div>
                             <span class="position-absolute top-0 end-0">{{ review.created_on | date:"j N y" }}</span>
                     </div>
                 </div>
