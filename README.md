@@ -51,15 +51,15 @@ As an admin I would like to be able to...
     * Simple black and yellow colours for most of site and purple for logo to represent royalty
     * contrsating colours for easy legiblity and style
 
-![Colour scheme #000000 #F1B814 #490B3D](static/images/colourscheme.png)
+    ![Colour scheme #000000 #F1B814 #490B3D](static/images/colourscheme.png)
 
 * Font taken from [Google Fonts](https://fonts.google.com/)
 
-![Romanesco Font](static/images/romanescofont.PNG)
+    ![Romanesco Font](static/images/romanescofont.PNG)
 
 * Pages were planned out on [Figma](https://www.figma.com) using wireframes
 
-![Image from Figma]()
+    ![Image from Figma]()
 
 ## Features
 
@@ -77,30 +77,46 @@ As an admin I would like to be able to...
 
 * Index Page
     * Introduction telling you about the site and what to do
+
+    ![Introduction](static/images/intro.png)
+
     * List of Games to choose
+
+    ![List of games](static/images/gamelist.png)
+
     * Paginated if above 6 games
+
+    ![Paginate Next Button](static/images/pagination.png)
     * Games ordered by average review scores
     * Images, titles, scores and developer shown on each game card
 
-![Index Page]()
+
 
 * Game Detail Page
 
     * Game detail with average review score and description
+
+    ![Game image, title, reating and description](static/images/gamedetail.png)
+
     * Game reviews with the ability for user's to edit and delete their own reviews
+
+    ![Reviews of the game](static/images/reviews.png)
+
     * Review Form with stars that reflect the users rating
+
+    ![Review form](static/images/review-form.png)
 
 * Edit Review Page
 
     * Will fill the textarea with the review of that instance
 
-![Edit Review Page]()
+    ![Edit Review Page](static/images/edit-review.png)
 
 * Delete Modal
 
     * An 'are you sure?' modal to prevent users from accidentaly deleting
 
-![Delete Modal]()
+    ![Delete Modal](static/images/delete-modal.png)
 
 ### Future Features
 
