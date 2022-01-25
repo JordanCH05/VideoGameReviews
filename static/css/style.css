@@ -55,6 +55,15 @@ footer a {
     color: #F1B814;
 }
 
+form p {
+    display: grid;
+    grid-template-columns: auto 50%;
+}
+
+form p label {
+    padding-right: 3rem;
+}
+
 /* Review Score Star Rating */
 
 .stars-outer {

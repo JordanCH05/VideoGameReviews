@@ -8,23 +8,33 @@
 
 <div class="container text-warning">
     <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            <h3>{% trans "Sign Up" %}</h3>
+        <div class="mt-3">
+            <div class="col-md-8 mt-3 offset-md-2">
+                <div class="card bg-dark text-center p-3">
+                    <h3>{% trans "Sign Up" %}</h3>
 
-            <p>{% blocktrans %}Welcome back to the Royal Robot Reviews. Do you already have an account? Then please <a
-                class="link" href="{{ login_url }}">sign in</a> instead.{% endblocktrans %}</p>
+                    <p>{% blocktrans %}Welcome back to the Royal Robot Reviews. Do you already have an account? Then please <a
+                        class="link" href="{{ login_url }}">sign in</a> instead.{% endblocktrans %}</p>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-8 my-3 offset-md-2">
-            <form id="signup_form" method="post" action="{% url 'account_signup' %}">
-                {% csrf_token %}
-                {{ form.as_p }}
-                {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-                <button class="btn btn-warning right" type="submit">{% trans "Sign Up" %}</button>
-            </form>
+        <div class="mt-3">
+            <div class="col-md-8 my-3 offset-md-2">
+                <div class="card bg-dark text-end p-3">
+                    <form id="signup_form" method="post" action="{% url 'account_signup' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        {% if redirect_field_value %}
+                        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                        {% endif %}
+                        <div class="d-flex justify-content-end">
+                            <button class="btn btn-outline-warning" type="submit">{% trans "Sign Up" %}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
