@@ -47,6 +47,14 @@ h1, .logo-text {
     font-size: 24px;
 }
 
+footer a {
+    color: black;
+}
+
+.link {
+    color: #F1B814;
+}
+
 /* Review Score Star Rating */
 
 .stars-outer {
