@@ -4,7 +4,7 @@ This website has been created for users to write reviews for a selection of game
 
 The live site can be found [here](https://royal-robot-reviews.herokuapp.com/)
 
-![Responsive Mockup of site]()
+![Responsive Mockup of site](static/images/mockup.png)
 
 ## Table of Contents
 
