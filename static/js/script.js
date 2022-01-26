@@ -6,6 +6,7 @@ if (document.querySelector("#id_score")) {
     
 /**
 * Styles star rating width based on score
+* Function is version of code from Brad Traversy
     */
 function starRating() {
     

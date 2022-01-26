@@ -211,6 +211,7 @@ All modules required are located in the [requirements.txt](requirements.txt) fil
 
 ## Credits
 
+* JavaScript code for star ratings is based on code from [Brad Traversy](https://codepen.io/bradtraversy/pen/GQLRZv)
 * [Bootstrap cheatsheet](https://hackerthemes.com/bootstrap-cheatsheet/) helped by listing boostrap classes in an easy to find manner
 * [Boostrap Templates and Examples](https://getbootstrap.com/docs/5.1/examples/) used as a basis for some features
 * [Font Awesome](https://fontawesome.com/) used for the stars
