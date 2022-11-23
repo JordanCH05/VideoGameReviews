@@ -2,7 +2,7 @@
 
 This website has been created for users to write reviews for a selection of games and compare their scores.
 
-The live site can be found [here](https://royal-robot-reviews.herokuapp.com/)
+The live site can be found [here](https://royal-robot-reviews.onrender.com)
 
 ![Responsive Mockup of site](static/images/mockup.png)
 
@@ -203,7 +203,8 @@ As an admin I would like to be able to...
 * VS Code as IDE (integrated development environment)
 * PIP to install packages
 * Postgresql for the database to create content and manage data
-* Heroku used for deployment
+* Heroku used for original deployment
+* Migrated to Render for current deployment
 
 ### Required modules
 
